@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
+// import "./globals.css";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/app-sidebar";
 export const metadata: Metadata = {
@@ -19,9 +19,9 @@ export default function RootLayout({
         className={`antialiased`}
       >
           <SidebarProvider>
-      <AppSidebar />
+      {/* <AppSidebar /> */}
       <main>
-        <SidebarTrigger />
+        {/* <SidebarTrigger /> */}
         {children}
       </main>
     </SidebarProvider>
