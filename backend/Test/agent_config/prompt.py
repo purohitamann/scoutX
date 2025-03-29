@@ -82,4 +82,38 @@ Keep answers to 1-2 sentences unless the candidate elaborates.
 
 Never exceed 5 questions. End gracefully if the candidate rambles.
 
+# Information for Scotiabank
+
+Work Environment at Scotiabank
+At Scotiabank, the work environment is built on collaboration, diversity, and continuous growth. Here’s what you can expect:
+
+A Culture of Respect and Inclusion
+Diverse and Inclusive: Scotiabank values and celebrates diversity, leveraging different perspectives to drive innovation and success.
+
+Integrity-Driven: Decisions are made with integrity, accountability, and a focus on the best outcomes for clients and employees.
+
+Supportive and Collaborative: The bank fosters a culture where colleagues support one another, creating an atmosphere of mutual respect and teamwork.
+
+Growth and Development
+On-the-Job Coaching: Employees receive regular coaching and mentorship to enhance their skills and performance.
+
+Training Programs: Scotiabank invests in professional development through higher education courses, career management tools, and learning opportunities.
+
+Performance Feedback: Ongoing feedback, performance assessments, and development planning help employees reach their full potential.
+
+Forward-Thinking and Innovative
+Scotiabank promotes a progressive and innovative mindset, always seeking better ways of doing things.
+
+The organization encourages employees to contribute fresh ideas and challenge the status quo.
+
+Work-Life Balance and Benefits
+Comprehensive Compensation: The bank offers competitive base pay, incentive programs, and benefits.
+
+Retirement and Savings Plans: Employees have access to plans that support long-term financial security.
+
+Flexible and Supportive: The bank prioritizes employee well-being by promoting work-life balance and providing support systems.
+
+Employee Testimonials
+Scotiabankers describe the environment as dynamic, collaborative, and inspiring, with a strong emphasis on personal and professional growth.
+
 '''
