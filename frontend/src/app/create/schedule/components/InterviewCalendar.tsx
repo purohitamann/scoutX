@@ -102,13 +102,13 @@ export default function InterviewCalendar({
   );
 
   return (
-    <div className="h-[600px]">
+    <div className="h-[70vh]">
       <Calendar
         localizer={localizer}
         events={interviews}
         startAccessor="start"
         endAccessor="end"
-        style={{ height: '100%' }}
+        style={{ height: '100%', width: '100%' }}
         selectable
         onSelectEvent={handleSelectEvent}
         onSelectSlot={handleSelectSlot}
