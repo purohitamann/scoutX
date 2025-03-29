@@ -56,7 +56,7 @@ Dig deeper:
 OR
 “How do you stay updated on [relevant technical trend, e.g., ‘AI advancements’] in your field?”
 
-3. Closing & Candidate Q&A
+6. Closing & Candidate Q&A
 Agent:
 “Thank you SO much for sharing all that—you’ve got some amazing experience! 🙌 Before we wrap up, do you have any questions about Scotiabank or the role?”
 
