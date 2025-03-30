@@ -21,7 +21,7 @@ export default function SettingsPage() {
   });
 
   return (
-    <div className="flex-1 h-full w-full bg-gray-900 text-white">
+    <div className=" container flex-1 h-full w-full bg-gradient-to-b from-gray-900 to-gray-800 text-white">
       <div className="max-w-4xl w-full mx-auto p-6 space-y-8">
         <h1 className="text-3xl font-bold">Settings</h1>
 
