@@ -40,7 +40,6 @@ export default function Home() {
       </div>
       {/* Gradient overlay for better text contrast */}
       <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/70 to-transparent z-1 pointer-events-none" />
-      
 
       {/* Foreground content */}
       <motion.div
@@ -75,35 +74,53 @@ export default function Home() {
               transition={{ duration: 0.4 }}
               className="mt-6 inline-block bg-blue-600 text-white px-5 py-3 rounded-xl shadow-lg"
             >
-              Hi, how can I help you today?
+              <RotatingText
+                texts={[
+                  "Hi, how can I help you today?",
+                  "Hola, ¿cómo puedo ayudarte hoy?",
+                  "Bonjour, comment puis-je vous aider aujourd'hui ?",
+                  "你好，我今天能帮你什么吗？",
+                ]}
+                mainClassName="px-2 sm:px-2 md:px-3 text-white font-mono font-semibold overflow-hidden py-0.5 sm:py-1 md:py-2 justify-center rounded-lg"
+                staggerFrom={"first"}
+                initial={{ y: "100%" }}
+                animate={{ y: 0 }}
+                exit={{ y: "-120%" }}
+                staggerDuration={0.01}
+                splitLevelClassName="overflow-hidden"
+                transition={{ type: "spring", damping: 30, stiffness: 400 }}
+                rotationInterval={3000}
+              />
             </motion.div>
           )}
         </AnimatePresence>
 
-        <h1 className="text-4xl font-bold mt-8 text-white">
+        <h1 className="text-4xl font-mono font-bold mt-8 text-white">
           Welcome to ScoutX
         </h1>
         <div className="flex justify-center items-center ">
-        <p className="mt-4 text-lg text-blue-200 px-4">
-          Your AI-powered recruitment </p>
-        <RotatingText
-        texts={["assistant","friend","helper", "aide"]}
-        mainClassName="px-2 sm:px-2 md:px-3 mt-4 bg-blue-500 text-white overflow-hidden py-0.5 sm:py-1 md:py-2 justify-center rounded-lg"
-        staggerFrom={"first"}
-        initial={{ y: "100%" }}
-        animate={{ y: 0 }}
-        exit={{ y: "-120%" }}
-        staggerDuration={0.025}
-        splitLevelClassName="overflow-hidden pb-0.5 sm:pb-1 md:pb-1"
-        transition={{ type: "spring", damping: 30, stiffness: 400 }}
-        rotationInterval={2000}
-      /></div>
+          <p className="mt-4 text-lg font-mono text-blue-200 px-4">
+            Your AI-powered recruitment{" "}
+          </p>
+          <RotatingText
+            texts={["assistant", "friend", "helper", "aide"]}
+            mainClassName="px-2 sm:px-2 md:px-3 mt-4 font-bold font-mono bg-blue-500 text-white overflow-hidden py-0.5 sm:py-1 md:py-2 justify-center rounded-lg"
+            staggerFrom={"first"}
+            initial={{ y: "100%" }}
+            animate={{ y: 0 }}
+            exit={{ y: "-120%" }}
+            staggerDuration={0.025}
+            splitLevelClassName="overflow-hidden"
+            transition={{ type: "spring", damping: 30, stiffness: 400 }}
+            rotationInterval={2000}
+          />
+        </div>
 
         <div className="flex justify-center mt-10 space-x-4 relative z-20">
           <div className="relative" ref={dropdownRef}>
             <Button
               onClick={() => setOpen(!open)}
-              className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 shadow-md"
+              className="bg-blue-600 font-mono text-white px-4 py-2 rounded hover:bg-blue-700 shadow-md"
             >
               Create Screenline ▾
             </Button>
@@ -115,14 +132,14 @@ export default function Home() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
                   transition={{ duration: 0.2 }}
-                  className="absolute left-0 mt-0 w-48 bg-gray-900 border border-gray-700 rounded-xl shadow-lg overflow-hidden"
+                  className="absolute left-0 mt-0 w-48 bg-gray-900 border font-mono font-extralight border-gray-700 rounded-xl shadow-lg overflow-hidden"
                 >
                   <button
                     onClick={() => {
                       setOpen(false);
                       console.log("Create Job Post");
                     }}
-                    className="block w-full px-4 py-2 text-left hover:bg-gray-700 transition font-light text-sm"
+                    className="block w-full px-4 py-2 text-left hover:bg-gray-700 transition text-sm"
                   >
                     Create Job Post
                   </button>
@@ -131,7 +148,7 @@ export default function Home() {
                       setOpen(false);
                       router.push("/create/jobs");
                     }}
-                    className="block w-full px-4 py-2 text-left hover:bg-gray-700 transition font-light text-sm"
+                    className="block w-full px-4 py-2 text-left hover:bg-gray-700 transition  text-sm"
                   >
                     View Job Postings
                   </button>
@@ -140,7 +157,7 @@ export default function Home() {
             </AnimatePresence>
           </div>
 
-          <Button className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 shadow-md">
+          <Button className="bg-blue-600 font-mono text-white px-4 py-2 rounded hover:bg-blue-700 shadow-md">
             Analyze
           </Button>
         </div>
