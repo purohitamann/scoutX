@@ -21,10 +21,9 @@ export default function RootLayout({
       <body className={inter.className}>
         <SidebarProvider>
           <AppSidebar />
-          <main>
-            <SidebarTrigger />
+              <SidebarTrigger />
             {children}
-          </main>
+
         </SidebarProvider>
       </body>
     </html>
