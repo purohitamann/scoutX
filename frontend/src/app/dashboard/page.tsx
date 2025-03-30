@@ -6,10 +6,10 @@ import React from "react";
 
 export default function Dashboard() {
   return (
-    <div className="flex h-screen">
+    <div className="flex container mx-auto  h-screen bg-gradient-to-b from-gray-900 to-gray-800">
 
       {/* Main Content */}
-      <div className="flex-1 p-6 bg-gray-100">
+      <div className="flex-1 p-6 ">
         <h1 className="text-2xl font-bold mb-4">Dashboard</h1>
         
         {/* Top Section */}
