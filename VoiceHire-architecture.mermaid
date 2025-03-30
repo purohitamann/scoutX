@@ -11,3 +11,6 @@ flowchart TD
     I -->|Audio Output| J[Speaker]
     G -->|Save| K[Transcript & Analysis]
     K -->|Generate| L[Candidate Report]
+    L -->|Trigger| M[Automated Follow-up Email]
+    M -->|Include| N[Interview Slot Link]
+    N -->|Book Slot| O[Calendar Integration]
