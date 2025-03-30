@@ -43,17 +43,17 @@ export default function CandidatesTable() {
 
   if (candidates.length <= 0) {
     return (
-      <div className="">
+      <div className="min-h-screen bg-background">
         <Loader fullScreen />
       </div>
     );
   }
 
   return (
-    <div className="p-6">
+    <div className="min-h-screen bg-background p-6">
       <div className="flex justify-between items-center mb-6">
-        <h2 className="text-2xl font-bold">Candidates</h2>
-        <div className="text-sm text-gray-500">
+        <h2 className="text-2xl font-bold text-foreground">Candidates</h2>
+        <div className="text-sm text-muted-foreground">
           {candidates.length} candidates found
         </div>
       </div>
@@ -62,17 +62,17 @@ export default function CandidatesTable() {
         {candidates.map((candidate) => (
           <Card 
             key={candidate.id}
-            className="group relative overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1 cursor-pointer"
+            className="group relative overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1 cursor-pointer bg-card border-border"
             onClick={() => router.push(`/candidates/${candidate.id}`)}
           >
             <div className="p-6">
               <div className="flex justify-between items-start mb-4">
                 <div>
-                  <h3 className="text-lg font-semibold group-hover:text-blue-600 transition-colors">
+                  <h3 className="text-lg font-semibold text-card-foreground group-hover:text-primary transition-colors">
                     {candidate.name}
                   </h3>
                   {candidate.experience && (
-                    <p className="text-sm text-gray-500">{candidate.experience} experience</p>
+                    <p className="text-sm text-muted-foreground">{candidate.experience} experience</p>
                   )}
                 </div>
                 {candidate.score && (
@@ -83,11 +83,11 @@ export default function CandidatesTable() {
               </div>
 
               <div className="space-y-2 mb-4">
-                <div className="flex items-center text-sm text-gray-600">
+                <div className="flex items-center text-sm text-muted-foreground">
                   <Mail className="w-4 h-4 mr-2" />
                   {candidate.email}
                 </div>
-                <div className="flex items-center text-sm text-gray-600">
+                <div className="flex items-center text-sm text-muted-foreground">
                   <Phone className="w-4 h-4 mr-2" />
                   {candidate.phone}
                 </div>
@@ -103,12 +103,12 @@ export default function CandidatesTable() {
                 </div>
               )}
 
-              <div className="flex items-center justify-between mt-4 pt-4 border-t">
-                <div className="flex items-center text-sm text-blue-600">
+              <div className="flex items-center justify-between mt-4 pt-4 border-t border-border">
+                <div className="flex items-center text-sm text-primary">
                   <FileText className="w-4 h-4 mr-2" />
                   View Resume
                 </div>
-                <ArrowRight className="w-4 h-4 text-gray-400 group-hover:text-blue-600 transition-colors" />
+                <ArrowRight className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
               </div>
             </div>
           </Card>
