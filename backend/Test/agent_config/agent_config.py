@@ -1,8 +1,6 @@
 import requests
 from prompt import SYSTEM_PROMPT
 
-# Assistant ID :-54c07f4d-e938-4110-8ab7-57bb2f41b1af
-
 response = requests.post(
   "https://api.vapi.ai/assistant",
   headers={
@@ -29,13 +27,13 @@ response = requests.post(
         }
         ],
         "provider": "google",
-        "temperature": 1.2,
+        "temperature": 1.0,
         "emotionRecognitionEnabled": True
     },
-    "firstMessage": "Hello {{candidate_name}}, this is Jhon from Scotiabank. I noticed that you’ve applied for the {{job_name}} role. Are you available right now for a brief call to discuss your application?",
+    "firstMessage": "Hi {{candidate_name}}, Emily from Scotiabank here. Are you available for a quick call to discuss your {{job_name}} application?",
     "voicemailMessage": "Please call back when you're available.",
     "endCallFunctionEnabled": True,
-    "endCallMessage": "Thank you for your time. Have a Nice Day",
+    "endCallMessage": "Thanks again for your time, {{candidate_name}}!We’ll be in touch soon with next steps. Wishing you a fantastic day ahead!",
     "transcriber": {
         "model": "nova-3",
         "language": "en",
@@ -72,11 +70,11 @@ response = requests.post(
         ]
     },
     "startSpeakingPlan": {
-        "waitSeconds": 0.6,
+        "waitSeconds": 0.2,
         "smartEndpointingEnabled": "livekit",
         "smartEndpointingPlan": {
         "provider": "livekit",
-        "waitFunction": "70 + 4000 * x"
+        "waitFunction": "70 + 3000 * x"
         }
     },
     "stopSpeakingPlan": {
@@ -85,5 +83,4 @@ response = requests.post(
 }
 
 )
-
-print(response.json())
+print(response['results'][0]['id'])
