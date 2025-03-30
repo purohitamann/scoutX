@@ -106,7 +106,7 @@ export default function SchedulePage() {
   const upcomingInterviews = interviews.filter(interview => isUpcoming(interview.start));
 
   return (
-    <div className="min-h-screen bg-gray-50 px-2">
+    <div className="container mx-auto p-16 h-screen bg-gradient-to-b from-gray-900 to-gray-800 px-2">
       <div className="w-full">
         <div className="mb-4 flex flex-col sm:flex-row sm:items-center sm:justify-between">
         <h1 className="text-3xl font-bold text-blue-400">AI Interview Scheduling</h1>
