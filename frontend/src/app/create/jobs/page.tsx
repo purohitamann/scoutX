@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import Loader from "@/components/ui/loader";
-
+import { Button } from "@/components/ui/button";
 interface JobCard {
   id: string;
   title: string;
@@ -95,7 +95,9 @@ export default function JobsPage() {
   return (
     <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
-        <h1 className="text-3xl font-bold text-gray-900 mb-8">Available Jobs</h1>
+     
+        <h1 className="text-3xl font-bold text-gray-900 mb-8 ">Existing Screen Jobs</h1>
+       
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {jobs.map((job) => (
             <Link href={`/create/jobs/${job.id}`} key={job.id}>
@@ -108,6 +110,9 @@ export default function JobsPage() {
               </div>
             </Link>
           ))}
+        </div>
+        <div className="mt-4">
+          <Button>Create ScreenJob</Button>
         </div>
       </div>
     </div>
