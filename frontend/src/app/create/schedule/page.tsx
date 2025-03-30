@@ -106,10 +106,10 @@ export default function SchedulePage() {
   const upcomingInterviews = interviews.filter(interview => isUpcoming(interview.start));
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto">
-        <div className="mb-8 flex flex-col sm:flex-row sm:items-center sm:justify-between">
-          <h1 className="text-3xl font-bold text-gray-900 mb-4 sm:mb-0">AI Interview Scheduling</h1>
+    <div className="min-h-screen bg-gray-50 px-2">
+      <div className="w-full">
+        <div className="mb-4 flex flex-col sm:flex-row sm:items-center sm:justify-between">
+        <h1 className="text-3xl font-bold text-blue-400">AI Interview Scheduling</h1>
           
           <button
             onClick={() => setShowScheduleForm(true)}
@@ -145,7 +145,7 @@ export default function SchedulePage() {
             </nav>
           </div>
           
-          <div className="p-6">
+          <div className="p-4">
             {activeTab === 'calendar' ? (
               <InterviewCalendar 
                 interviews={interviews}
