@@ -49,16 +49,17 @@ export default function Home() {
         className="text-center z-10"
       >
         {/* Microphone Icon */}
-        <div className="relative w-28 h-28 mx-auto mb-4">
+        <div className="relative w-28 h-28 mx-auto mb-2">
           <motion.div
             whileTap={{ scale: 0.9, rotate: -5 }}
             whileHover={{ scale: 1.1 }}
             onClick={toggleAssistant}
-            className={`relative z-10 w-28 h-28 flex items-center justify-center rounded-full cursor-pointer shadow-lg ${
-              showAssistant
+            onMouseEnter={toggleAssistant}
+            className={`relative z-10 w-28 h-28 flex items-center justify-center rounded-full cursor-pointer transition-all duration-300 ease-in-out
+              ${showAssistant
                 ? "bg-red-500 text-white shadow-xl animate-pulse"
-                : "bg-gray-800 text-white hover:bg-gray-700"
-            }`}
+                : "bg-gray-800 text-white hover:bg-gray-700 hover:scale-[1.15] hover:shadow-[0_0_20px_rgba(59,130,246,0.6)]"
+              }`}
           >
             <Mic className="w-8 h-8" />
           </motion.div>

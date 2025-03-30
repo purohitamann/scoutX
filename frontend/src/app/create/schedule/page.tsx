@@ -1,209 +1,169 @@
 'use client';
 
 import { useState } from 'react';
-import dynamic from 'next/dynamic';
-import NewInterviewForm from './components/NewInterviewForm';
-import InterviewDetails from './components/InterviewDetails';
 
-// Define interfaces
 interface Interview {
   id: number;
-  title: string;
-  start: Date;
-  end: Date;
   candidateName: string;
   jobTitle: string;
-  isAIInterview: boolean;
+  datetime: string;
+  type: 'AI';
+  status: 'Scheduled' | 'Completed' | 'Pending';
 }
 
-// Sample interviews for initial state
-const sampleInterviews: Interview[] = [
-  {
-    id: 1,
-    title: 'AI Interview: John Doe',
-    start: new Date(new Date().setHours(10, 0, 0, 0)),
-    end: new Date(new Date().setHours(10, 30, 0, 0)),
-    candidateName: 'John Doe',
-    jobTitle: 'Senior Software Engineer',
-    isAIInterview: true
-  },
-  {
-    id: 2,
-    title: 'AI Interview: Jane Smith',
-    start: new Date(new Date().setHours(13, 0, 0, 0)),
-    end: new Date(new Date().setHours(13, 30, 0, 0)),
-    candidateName: 'Jane Smith',
-    jobTitle: 'Data Scientist',
-    isAIInterview: true
-  },
-  {
-    id: 3,
-    title: 'AI Interview: Mike Johnson',
-    start: new Date(new Date().setDate(new Date().getDate() + 1)),
-    end: new Date(new Date().setDate(new Date().getDate() + 1)),
-    candidateName: 'Mike Johnson',
-    jobTitle: 'UX Designer',
-    isAIInterview: true
-  },
-];
-
-// Use dynamic import for the calendar component to avoid SSR issues
-const InterviewCalendar = dynamic(() => import('./components/InterviewCalendar'), {
-  ssr: false,
-});
-
 export default function SchedulePage() {
-  const [interviews, setInterviews] = useState<Interview[]>(sampleInterviews);
-  const [selectedInterview, setSelectedInterview] = useState<Interview | null>(null);
-  const [showScheduleForm, setShowScheduleForm] = useState(false);
-  const [activeTab, setActiveTab] = useState<'calendar' | 'upcoming'>('calendar');
+  const [interviews, setInterviews] = useState<Interview[]>([
+    {
+      id: 1,
+      candidateName: 'Emily Carter',
+      jobTitle: 'Machine Learning Engineer',
+      datetime: '2025-04-01T10:00',
+      type: 'AI',
+      status: 'Scheduled',
+    },
+    {
+      id: 2,
+      candidateName: 'Ravi Shah',
+      jobTitle: 'Data Scientist',
+      datetime: '2025-04-02T14:30',
+      type: 'AI',
+      status: 'Scheduled',
+    },
+    {
+      id: 3,
+      candidateName: 'Ava Thompson',
+      jobTitle: 'AI Research Intern',
+      datetime: '2025-04-04T09:00',
+      type: 'AI',
+      status: 'Pending',
+    },
+  ]);
 
-  const handleScheduleInterview = (interviewData: {
-    candidateName: string;
-    jobTitle: string;
-    email: string;
-    date: Date;
-    duration: number;
-  }) => {
-    const endDate = new Date(interviewData.date);
-    endDate.setMinutes(endDate.getMinutes() + interviewData.duration);
-    
+  const [showForm, setShowForm] = useState(false);
+  const [form, setForm] = useState({
+    candidateName: '',
+    jobTitle: '',
+    datetime: '',
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
+  const handleAddInterview = () => {
     const newInterview: Interview = {
-      id: interviews.length > 0 ? Math.max(...interviews.map(i => i.id)) + 1 : 1,
-      title: `AI Interview: ${interviewData.candidateName}`,
-      start: interviewData.date,
-      end: endDate,
-      candidateName: interviewData.candidateName,
-      jobTitle: interviewData.jobTitle,
-      isAIInterview: true
+      id: Date.now(),
+      candidateName: form.candidateName,
+      jobTitle: form.jobTitle,
+      datetime: form.datetime,
+      type: 'AI',
+      status: 'Scheduled',
     };
-    
-    setInterviews(prev => [...prev, newInterview]);
-    setShowScheduleForm(false);
-    
-    // Optionally show details of the newly created interview
-    setSelectedInterview(newInterview);
+    setInterviews([...interviews, newInterview]);
+    setForm({ candidateName: '', jobTitle: '', datetime: '' });
+    setShowForm(false);
   };
-
-  const handleAddInterviewFromCalendar = (interview: Interview) => {
-    setInterviews(prev => [...prev, interview]);
-  };
-
-  const handleSelectEvent = (interview: Interview) => {
-    setSelectedInterview(interview);
-  };
-
-  const handleCloseDetails = () => {
-    setSelectedInterview(null);
-  };
-
-  // Helper function to determine if an interview is upcoming
-  const isUpcoming = (date: Date) => {
-    return date > new Date();
-  };
-
-  // Filter upcoming interviews
-  const upcomingInterviews = interviews.filter(interview => isUpcoming(interview.start));
 
   return (
+<<<<<<< HEAD
     <div className="container mx-auto p-16 h-screen bg-gradient-to-b from-gray-900 to-gray-800 px-2">
       <div className="w-full">
         <div className="mb-4 flex flex-col sm:flex-row sm:items-center sm:justify-between">
         <h1 className="text-3xl font-bold text-blue-400">AI Interview Scheduling</h1>
           
+=======
+    <div className="min-h-screen bg-background text-foreground px-6 py-10 w-full">
+      <div className="max-w-4xl mx-auto">
+        <div className="flex justify-between items-center mb-8">
+          <h1 className="text-2xl font-bold tracking-tight px-4">AI Interview Scheduler</h1>
+>>>>>>> 1901da6 (feat: add moment.js for date handling and enhance scheduling UI)
           <button
-            onClick={() => setShowScheduleForm(true)}
-            className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
+            onClick={() => setShowForm(true)}
+            className="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded text-white text-sm"
           >
-            Schedule New Interview
+            + New Interview
           </button>
         </div>
-        
-        <div className="bg-white rounded-lg shadow-md mb-8">
-          <div className="border-b border-gray-200">
-            <nav className="flex -mb-px">
-              <button
-                onClick={() => setActiveTab('calendar')}
-                className={`py-4 px-6 text-center border-b-2 font-medium text-sm ${
-                  activeTab === 'calendar'
-                    ? 'border-blue-500 text-blue-600'
-                    : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
-                }`}
+
+        {interviews.length === 0 ? (
+          <p className="text-gray-400">No interviews scheduled.</p>
+        ) : (
+          <div className="space-y-4">
+            {interviews.map((interview) => (
+              <div
+                key={interview.id}
+                className="bg-[#111] border border-gray-800 rounded p-4 flex justify-between items-center"
               >
-                Calendar View
-              </button>
-              <button
-                onClick={() => setActiveTab('upcoming')}
-                className={`py-4 px-6 text-center border-b-2 font-medium text-sm ${
-                  activeTab === 'upcoming'
-                    ? 'border-blue-500 text-blue-600'
-                    : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
-                }`}
-              >
-                Upcoming Interviews ({upcomingInterviews.length})
-              </button>
-            </nav>
-          </div>
-          
-          <div className="p-4">
-            {activeTab === 'calendar' ? (
-              <InterviewCalendar 
-                interviews={interviews}
-                onSelectEvent={handleSelectEvent}
-                onAddInterview={handleAddInterviewFromCalendar}
-              />
-            ) : (
-              <div className="space-y-4">
-                {upcomingInterviews.length === 0 ? (
-                  <p className="text-center text-gray-500 py-8">No upcoming interviews scheduled.</p>
-                ) : (
-                  upcomingInterviews.map(interview => (
-                    <div 
-                      key={interview.id} 
-                      className="border rounded-lg p-4 hover:bg-gray-50 cursor-pointer"
-                      onClick={() => handleSelectEvent(interview)}
-                    >
-                      <div className="flex justify-between items-start">
-                        <div>
-                          <h3 className="font-semibold">{interview.title}</h3>
-                          <p className="text-sm text-gray-500">{interview.jobTitle}</p>
-                        </div>
-                        <div className="text-sm text-gray-500">
-                          {interview.start.toLocaleString('en-US', {
-                            weekday: 'short',
-                            month: 'short',
-                            day: 'numeric',
-                            hour: '2-digit',
-                            minute: '2-digit',
-                          })}
-                        </div>
-                      </div>
-                    </div>
-                  ))
-                )}
+                <div>
+                  <h2 className="text-lg font-semibold">{interview.candidateName}</h2>
+                  <p className="text-sm text-gray-400">{interview.jobTitle}</p>
+                  <p className="text-sm text-gray-500">
+                    {new Date(interview.datetime).toLocaleString()}
+                  </p>
+                </div>
+                <div className="text-right">
+                  <span className="text-xs text-blue-400 bg-blue-800/30 px-2 py-1 rounded mr-2">
+                    {interview.type} Interview
+                  </span>
+                  <span
+                    className={`text-xs px-2 py-1 rounded ${
+                      interview.status === 'Scheduled'
+                        ? 'bg-green-800/30 text-green-400'
+                        : interview.status === 'Pending'
+                        ? 'bg-yellow-800/30 text-yellow-400'
+                        : 'bg-gray-700 text-gray-300'
+                    }`}
+                  >
+                    {interview.status}
+                  </span>
+                </div>
               </div>
-            )}
-          </div>
-        </div>
-        
-        {showScheduleForm && (
-          <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-            <div className="max-w-2xl w-full">
-              <NewInterviewForm 
-                onSchedule={handleScheduleInterview}
-                onCancel={() => setShowScheduleForm(false)}
-              />
-            </div>
+            ))}
           </div>
         )}
-        
-        {selectedInterview && (
-          <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-            <div className="max-w-2xl w-full">
-              <InterviewDetails 
-                interview={selectedInterview}
-                onClose={handleCloseDetails}
+
+        {/* Modal Form */}
+        {showForm && (
+          <div className="fixed inset-0 bg-black bg-opacity-60 flex justify-center items-center z-50 p-4">
+            <div className="bg-[#111] p-6 rounded w-full max-w-md border border-gray-700">
+              <h2 className="text-lg font-bold mb-4">Schedule AI Interview</h2>
+              <input
+                type="text"
+                name="candidateName"
+                value={form.candidateName}
+                onChange={handleChange}
+                placeholder="Candidate Name"
+                className="w-full mb-3 px-3 py-2 bg-gray-900 border border-gray-700 rounded text-white"
               />
+              <input
+                type="text"
+                name="jobTitle"
+                value={form.jobTitle}
+                onChange={handleChange}
+                placeholder="Job Title"
+                className="w-full mb-3 px-3 py-2 bg-gray-900 border border-gray-700 rounded text-white"
+              />
+              <input
+                type="datetime-local"
+                name="datetime"
+                value={form.datetime}
+                onChange={handleChange}
+                className="w-full mb-4 px-3 py-2 bg-gray-900 border border-gray-700 rounded text-white"
+              />
+              <div className="flex justify-end space-x-2">
+                <button
+                  onClick={() => setShowForm(false)}
+                  className="px-4 py-2 text-sm bg-gray-700 hover:bg-gray-600 rounded"
+                >
+                  Cancel
+                </button>
+                <button
+                  onClick={handleAddInterview}
+                  className="px-4 py-2 text-sm bg-blue-600 hover:bg-blue-700 text-white rounded"
+                >
+                  Schedule
+                </button>
+              </div>
             </div>
           </div>
         )}

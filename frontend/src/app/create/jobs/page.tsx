@@ -93,6 +93,7 @@ export default function JobsPage() {
   }
 
   return (
+<<<<<<< HEAD
     <div className="min-h-screen bg-gradient-to-b from-gray-900 to-gray-800 text-white py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         <div className="flex items-center justify-between mb-8">
@@ -110,6 +111,21 @@ export default function JobsPage() {
                   </span>
                   <h2 className="text-xl font-semibold mb-2 text-white">{job.title}</h2>
                   <p className="text-sm text-gray-300 line-clamp-3">{job.description}</p>
+=======
+    <div className="min-h-screen bg-background text-foreground py-12 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto">
+     
+        <h1 className="text-3xl font-bold mb-8 ">Existing Screen Jobs</h1>
+       
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {jobs.map((job) => (
+            <Link href={`/create/jobs/${job.id}`} key={job.id}>
+              <div className="bg-gray-900 rounded-lg shadow-md overflow-hidden hover:bg-gray-800 hover:shadow-lg transition-shadow duration-300 cursor-pointer">
+                <div className="p-6">
+                  <div className="text-sm font-medium text-blue-600 mb-2">{job.field}</div>
+                  <h2 className="text-xl font-semibold text-white mb-3">{job.title}</h2>
+                  <p className="text-gray-600">{job.description}</p>
+>>>>>>> 1901da6 (feat: add moment.js for date handling and enhance scheduling UI)
                 </div>
               </div>
             </Link>
