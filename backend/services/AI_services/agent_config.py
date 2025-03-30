@@ -33,7 +33,7 @@ response = requests.post(
     "temperature": 1,
     "emotionRecognitionEnabled": True
   },
-  "firstMessage": "Hi {{candidate_name}}, Emily from Scotiabank here. Are you available for a quick call to discuss your {{job_name}} application?",
+  "firstMessage": "Hi {{candidate_name}}, Jhon from Scotiabank here. Are you available for a quick call to discuss your {{job_name}} application?",
   "voicemailMessage": "Please call back when you're available.",
   "endCallFunctionEnabled": True,
   "endCallMessage": "Thanks again for your time, {{candidate_name}}!We’ll be in touch soon with next steps. Wishing you a fantastic day ahead!",

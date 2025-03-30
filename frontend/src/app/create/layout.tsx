@@ -21,10 +21,10 @@ export default function RootLayout({
       <body className={inter.className}>
         <SidebarProvider>
 
-          <main>
+
 
             {children}
-          </main>
+          
         </SidebarProvider>
       </body>
     </html>
