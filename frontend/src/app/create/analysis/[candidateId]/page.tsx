@@ -1,6 +1,30 @@
 "use client";
 
 import { useParams } from "next/navigation";
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  LineElement,
+  PointElement,
+  Title,
+  Tooltip,
+  Legend,
+} from "chart.js";
+import { Bar, Line } from "react-chartjs-2";
+import { useMemo } from "react";
+
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  LineElement,
+  PointElement,
+  Title,
+  Tooltip,
+  Legend
+);
 
 const mockAnalysis = {
   candidate_name: "Patel Parth",
@@ -25,6 +49,100 @@ const mockAnalysis = {
 export default function CandidateAnalysisReport() {
   const { candidateId } = useParams();
 
+  const chartData = useMemo(() => {
+    const labels = Object.keys(mockAnalysis.criteria_scores);
+    const scores = Object.values(mockAnalysis.criteria_scores);
+
+    return {
+      labels,
+      datasets: [
+        {
+          label: "Score (/5)",
+          data: scores,
+          backgroundColor: "rgba(59, 130, 246, 0.6)",
+          borderColor: "rgba(59, 130, 246, 1)",
+          borderWidth: 1,
+        },
+      ],
+    };
+  }, []);
+
+  const lineChartData = useMemo(() => {
+    const labels = Object.keys(mockAnalysis.criteria_scores);
+    const scores = Object.values(mockAnalysis.criteria_scores);
+
+    return {
+      labels,
+      datasets: [
+        {
+          label: "Performance Over Time",
+          data: scores.map((score, idx) => score + (Math.random() * 0.5 - 0.25)),
+          fill: false,
+          borderColor: "rgba(34,197,94,1)",
+          backgroundColor: "rgba(34,197,94,0.2)",
+          tension: 0.4,
+        },
+      ],
+    };
+  }, []);
+
+  const chartOptions = useMemo(
+    () => ({
+      responsive: true,
+      plugins: {
+        legend: { display: false },
+        title: {
+          display: true,
+          text: "Candidate Evaluation Criteria",
+          color: "#ccc",
+          font: { size: 16 },
+        },
+      },
+      scales: {
+        x: { ticks: { color: "#aaa" } },
+        y: {
+          beginAtZero: true,
+          max: 5,
+          ticks: { stepSize: 1, color: "#aaa" },
+          grid: { color: "#333" },
+        },
+      },
+    }),
+    []
+  );
+
+  const lineChartOptions = useMemo(
+    () => ({
+      responsive: true,
+      plugins: {
+        legend: {
+          labels: {
+            color: "#ccc",
+          },
+        },
+        title: {
+          display: true,
+          text: "Candidate Confidence Trend (Simulated)",
+          color: "#ccc",
+          font: { size: 16 },
+        },
+      },
+      scales: {
+        x: {
+          ticks: { color: "#aaa" },
+          grid: { color: "#333" },
+        },
+        y: {
+          beginAtZero: true,
+          max: 5,
+          ticks: { stepSize: 1, color: "#aaa" },
+          grid: { color: "#333" },
+        },
+      },
+    }),
+    []
+  );
+
   return (
     <div className="max-w-4xl mx-auto p-8 text-gray-200 bg-gray-900 rounded-xl shadow-lg mt-10 border border-gray-700">
       <h1 className="text-3xl font-bold mb-4 text-blue-400">AI Screening Report</h1>
@@ -36,15 +154,13 @@ export default function CandidateAnalysisReport() {
       </section>
 
       <section className="mb-6">
-        <h3 className="text-lg font-semibold text-gray-300 mb-2">Criteria Scores</h3>
-        <ul className="grid grid-cols-2 gap-2">
-          {Object.entries(mockAnalysis.criteria_scores).map(([key, value]) => (
-            <li key={key}>
-              <span className="text-gray-400">{key}:</span>{" "}
-              <span className="text-blue-300 font-medium">{value}/5</span>
-            </li>
-          ))}
-        </ul>
+        <h3 className="text-lg font-semibold text-gray-300 mb-4">Evaluation Chart</h3>
+        <Bar data={chartData} options={chartOptions} />
+      </section>
+
+      <section className="mb-6">
+        <h3 className="text-lg font-semibold text-gray-300 mb-4">Web Chart</h3>
+        <Line data={lineChartData} options={lineChartOptions} />
       </section>
 
       <section className="mb-6">

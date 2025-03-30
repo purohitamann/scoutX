@@ -96,7 +96,7 @@ export default function Home() {
         </AnimatePresence>
 
         <h1 className="text-4xl font-mono font-bold mt-8 text-white">
-          Welcome to ScoutX
+          Welcome to VoiceHire
         </h1>
         <div className="flex justify-center items-center ">
           <p className="mt-4 text-lg font-mono text-blue-200 px-4">
