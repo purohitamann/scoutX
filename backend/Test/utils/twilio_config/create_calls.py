@@ -8,11 +8,11 @@ response = requests.post(
     "Content-Type": "application/json"
   },
   json={
-    "assistantId": "54c07f4d-e938-4110-8ab7-57bb2f41b1af",
+    "assistantId": "311481fe-9548-47c4-b41d-f0ab2bd6d945",
     "name": "ScoutX_API",
     "customers": [
       {
-        "number": "+16317686143"
+        "number": "+16479942477"
       }
     ],
     "phoneNumberId": "2840de11-bb64-4d66-b58b-b919ec2ac0e4",

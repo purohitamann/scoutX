@@ -1,7 +1,7 @@
 import requests
 from prompt import SYSTEM_PROMPT
 
-# Assistant ID :- 54c07f4d-e938-4110-8ab7-57bb2f41b1af
+# Assistant ID :-54c07f4d-e938-4110-8ab7-57bb2f41b1af
 
 response = requests.post(
   "https://api.vapi.ai/assistant",
@@ -32,7 +32,7 @@ response = requests.post(
         "temperature": 1.2,
         "emotionRecognitionEnabled": True
     },
-    "firstMessage": "Hello {{candidate_name}}, this is Emily from Scotiabank. I noticed that you’ve applied for the {{job_name}} role. Are you available right now for a brief call to discuss your application?",
+    "firstMessage": "Hello {{candidate_name}}, this is Jhon from Scotiabank. I noticed that you’ve applied for the {{job_name}} role. Are you available right now for a brief call to discuss your application?",
     "voicemailMessage": "Please call back when you're available.",
     "endCallFunctionEnabled": True,
     "endCallMessage": "Thank you for your time. Have a Nice Day",
