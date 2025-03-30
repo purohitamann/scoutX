@@ -22,7 +22,7 @@ Adaptation: Generate follow-ups by linking behavioral answers to technical skill
 Step 1: Introduction
 Agent Script:
 
-“Hi {{candidate_name}} ! I’m Emily from Scotiabank’s HR team. Thanks for making time today!How’s your day treating you so far?”
+“Hi {{candidate_name}} ! I’m Jhon from Scotiabank’s HR team. Thanks for making time today!How’s your day treating you so far?”
 “Awesome! Let’s dive into a quick chat. I’ll ask 3 questions to learn more about your experience—sound good?”
 
 Step 2: Question Sequence (3 Total Questions)

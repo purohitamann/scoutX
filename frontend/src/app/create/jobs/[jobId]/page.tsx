@@ -153,6 +153,7 @@
 // } 
 import { use } from 'react';
 import JobDetails from "@/components/JobDetails";
+import AppliedCandidatesTable from '@/components/AppliedCandidate';
 
 export default function JobPostingPage({ params }: { params: Promise<{ jobId: string }> }) {
   const { jobId } = use(params);
@@ -161,6 +162,8 @@ export default function JobPostingPage({ params }: { params: Promise<{ jobId: st
     <div className="container mx-auto p-4">
 
       <JobDetails jobId={jobId} />
+      
+      <AppliedCandidatesTable jobId={jobId} />
     </div>
   );
 }
