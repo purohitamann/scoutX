@@ -10,7 +10,7 @@ ANALYSIS_RESULT = {}
 
 def fetch_transcript_from_vapi(call_id):
     url = f"https://api.vapi.ai/call/{call_id}"
-    headers = {"Authorization": "Bearer b23b37bf-4795-4bcd-993d-401890c569cd"}
+    headers = {"Authorization": "Bearer "} # token
 
     response = requests.get(url, headers=headers)
     if response.status_code == 200:
@@ -39,7 +39,7 @@ def analyze_candidate_with_ai():
 
     url = "https://api.perplexity.ai/chat/completions"
     headers = {
-        "Authorization": "Bearer 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",
+        "Authorization": "Bearer ", #ppx token
         "Content-Type": "application/json"
     }
 

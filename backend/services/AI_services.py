@@ -2,7 +2,7 @@ import requests
 from backend.services.AI_services_configs.agent_config import *
 from backend.services.AI_services_configs.create_calls import *
 from backend.services.AI_services_configs.interview_slot import *
-API_KEY = "Bearer b23b37bf-4795-4bcd-993d-401890c569cd"
+API_KEY = "Bearer "# token
 HEADERS = {
     "Authorization": API_KEY,
     "Content-Type": "application/json"
