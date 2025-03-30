@@ -17,16 +17,22 @@ export function AppSidebar() {
         </SidebarHeader>
 
         <SidebarContent>
-          <SidebarGroup className="space-y-4">
+         <SidebarGroup>
+          
+         </SidebarGroup>
+        </SidebarContent>
+        <SidebarFooter>
+        <SidebarGroup className="space-y-4">
             <ul className="space-y-2">
-              <li>
-                <a href="/dashboard" className="flex items-center gap-3 px-4 py-2 rounded-lg transition-colors hover:bg-gray-800 hover:text-blue-400">
-                  <LayoutDashboard className="w-5 h-5 text-blue-400" /> Dashboard
-                </a>
-              </li>
+            
               <li>
                 <a href="/" className="flex items-center gap-3 px-4 py-2 rounded-lg transition-colors hover:bg-gray-800 hover:text-blue-400">
                   <Home className="w-5 h-5 text-blue-400" /> Home
+                </a>
+              </li>
+              <li>
+                <a href="/dashboard" className="flex items-center gap-3 px-4 py-2 rounded-lg transition-colors hover:bg-gray-800 hover:text-blue-400">
+                  <LayoutDashboard className="w-5 h-5 text-blue-400" /> Dashboard
                 </a>
               </li>
               <li>
@@ -56,7 +62,7 @@ export function AppSidebar() {
               </li>
             </ul>
           </SidebarGroup>
-        </SidebarContent>
+        </SidebarFooter>
       </div>
     </Sidebar>
   );
