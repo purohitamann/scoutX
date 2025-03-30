@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Loader from "./ui/loader";
 import Link from "next/link";
 import { Inbox, InfoIcon } from "lucide-react";
+import { FirstScreenFormModal } from "./FirstScreenModal";
 
 interface Candidate {
   id: string;
@@ -23,6 +24,8 @@ interface Candidate {
 export default function AppliedCandidatesTable({ jobId }: { jobId: string }) {
   const [candidates, setCandidates] = useState<Candidate[]>([]);
   const [error, setError] = useState<string | null>(null);
+  const [showModal, setShowModal] = useState(false);
+  const [selectedCandidate, setSelectedCandidate] = useState<Candidate | null>(null);
 
   useEffect(() => {
     fetch(`/api/candidates`)
@@ -39,6 +42,15 @@ export default function AppliedCandidatesTable({ jobId }: { jobId: string }) {
 
   return (
     <div className="mt-6">
+      {showModal && selectedCandidate && (
+        <FirstScreenFormModal 
+          candidate={selectedCandidate}
+          onClose={() => {
+            setShowModal(false);
+            setSelectedCandidate(null);
+          }}
+        />
+      )}
       <h2 className="text-xl font-semibold mb-4">Applied Candidates</h2>
       <table className="w-full text-left text-sm border border-gray-700 rounded">
         <thead className="bg-gray-800">
@@ -90,18 +102,23 @@ export default function AppliedCandidatesTable({ jobId }: { jobId: string }) {
                 {new Date(c.applied_at).toLocaleDateString()}
               </td>
               <td className="p-3 text-center">
-                <button
-                  className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white text-xs px-4 py-1 rounded shadow-md transition"
-                  onClick={() => alert(`Start AI interview for ${c.name}`)}
-                >
-                 First Screening
-                </button>
-                <button
-                  className="bg-gradient-to-r from-pink-400 to-indigo-700 hover:from-blue-700 hover:to-blue-800 text-white text-xs px-4 py-1 rounded shadow-md transition"
-                  onClick={() => alert(`Start AI interview for ${c.name}`)}
-                >
-                 Analysis
-                </button>
+                <div className="flex flex-col gap-2">
+                  <button
+                    className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white text-xs px-4 py-1 rounded shadow-md transition"
+                    onClick={() => {
+                      setSelectedCandidate(c);
+                      setShowModal(true);
+                    }}
+                  >
+                    First Screening
+                  </button>
+                  <button
+                    className="bg-gradient-to-r from-pink-400 to-indigo-700 hover:from-blue-700 hover:to-blue-800 text-white text-xs px-4 py-1 rounded shadow-md transition"
+                    onClick={() => alert(`Start AI interview for ${c.name}`)}
+                  >
+                    Analysis
+                  </button>
+                </div>
               </td>
               <td className="p-3 text-center">
                 <button
