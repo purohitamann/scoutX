@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Loader from "./ui/loader";
 import Link from "next/link";
+import { Inbox, InfoIcon } from "lucide-react";
 
 interface Candidate {
   id: string;
@@ -49,7 +50,9 @@ export default function AppliedCandidatesTable({ jobId }: { jobId: string }) {
             <th className="p-3">Match Score</th>
             <th className="p-3">Status</th>
             <th className="p-3">Applied</th>
-            <th className="p-3 text-center">Action</th>
+            <th className="p-3 text-center">Screen</th>
+            <th className="p-3 text-center">Schedule</th>
+            <th className="p-3 text-center">Send Feedback</th>
           </tr>
         </thead>
         <tbody>
@@ -88,10 +91,32 @@ export default function AppliedCandidatesTable({ jobId }: { jobId: string }) {
               </td>
               <td className="p-3 text-center">
                 <button
-                  className="bg-blue-600 hover:bg-blue-700 text-white text-sm px-4 py-1 rounded"
+                  className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white text-xs px-4 py-1 rounded shadow-md transition"
                   onClick={() => alert(`Start AI interview for ${c.name}`)}
                 >
-                  Start Interview
+                 First Screening
+                </button>
+                <button
+                  className="bg-gradient-to-r from-pink-400 to-indigo-700 hover:from-blue-700 hover:to-blue-800 text-white text-xs px-4 py-1 rounded shadow-md transition"
+                  onClick={() => alert(`Start AI interview for ${c.name}`)}
+                >
+                 Analysis
+                </button>
+              </td>
+              <td className="p-3 text-center">
+                <button
+                  className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white text-xs px-4 py-1 rounded shadow-md transition"
+                  onClick={() => alert(`Start AI interview for ${c.name}`)}
+                >
+                  Schedule Interview
+                </button>
+              </td>
+              <td className="p-3 text-center">
+                <button
+                  className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white text-xs px-4 py-1 rounded shadow-md transition"
+                  onClick={() => alert(`Start AI interview for ${c.name}`)}
+                >
+            <Inbox />
                 </button>
               </td>
             </tr>
