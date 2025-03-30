@@ -106,25 +106,25 @@ export default function SchedulePage() {
   const upcomingInterviews = interviews.filter(interview => isUpcoming(interview.start));
 
   return (
-    <div className="min-h-screen bg-gray-50 px-6 py-6">
+    <div className="min-h-screen bg-gray-50 px-2">
       <div className="w-full">
-        <div className="mb-8 flex flex-col sm:flex-row sm:items-center sm:justify-between">
-          <h1 className="text-4xl font-bold text-blue-500 mb-6 sm:mb-0">AI Interview Scheduling</h1>
+        <div className="mb-4 flex flex-col sm:flex-row sm:items-center sm:justify-between">
+        <h1 className="text-3xl font-bold text-blue-400">AI Interview Scheduling</h1>
           
           <button
             onClick={() => setShowScheduleForm(true)}
-            className="px-6 py-3 bg-blue-600 text-white rounded-md hover:bg-blue-700 text-lg font-medium shadow-md"
+            className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
           >
             Schedule New Interview
           </button>
         </div>
         
-        <div className="bg-white rounded-xl shadow-lg mb-10 overflow-hidden">
+        <div className="bg-white rounded-lg shadow-md mb-8">
           <div className="border-b border-gray-200">
-            <nav className="flex">
+            <nav className="flex -mb-px">
               <button
                 onClick={() => setActiveTab('calendar')}
-                className={`py-5 px-8 text-center border-b-2 font-medium text-base ${
+                className={`py-4 px-6 text-center border-b-2 font-medium text-sm ${
                   activeTab === 'calendar'
                     ? 'border-blue-500 text-blue-600'
                     : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
@@ -134,7 +134,7 @@ export default function SchedulePage() {
               </button>
               <button
                 onClick={() => setActiveTab('upcoming')}
-                className={`py-5 px-8 text-center border-b-2 font-medium text-base ${
+                className={`py-4 px-6 text-center border-b-2 font-medium text-sm ${
                   activeTab === 'upcoming'
                     ? 'border-blue-500 text-blue-600'
                     : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
@@ -145,7 +145,7 @@ export default function SchedulePage() {
             </nav>
           </div>
           
-          <div className="p-6">
+          <div className="p-4">
             {activeTab === 'calendar' ? (
               <InterviewCalendar 
                 interviews={interviews}
@@ -153,22 +153,22 @@ export default function SchedulePage() {
                 onAddInterview={handleAddInterviewFromCalendar}
               />
             ) : (
-              <div className="space-y-6 max-h-[70vh] overflow-y-auto py-4 px-2">
+              <div className="space-y-4">
                 {upcomingInterviews.length === 0 ? (
-                  <p className="text-center text-gray-500 py-12 text-lg">No upcoming interviews scheduled.</p>
+                  <p className="text-center text-gray-500 py-8">No upcoming interviews scheduled.</p>
                 ) : (
                   upcomingInterviews.map(interview => (
                     <div 
                       key={interview.id} 
-                      className="border rounded-lg p-5 hover:bg-gray-50 cursor-pointer shadow-sm transition-all hover:shadow"
+                      className="border rounded-lg p-4 hover:bg-gray-50 cursor-pointer"
                       onClick={() => handleSelectEvent(interview)}
                     >
                       <div className="flex justify-between items-start">
                         <div>
-                          <h3 className="font-semibold text-lg mb-1">{interview.title}</h3>
-                          <p className="text-base text-gray-500">{interview.jobTitle}</p>
+                          <h3 className="font-semibold">{interview.title}</h3>
+                          <p className="text-sm text-gray-500">{interview.jobTitle}</p>
                         </div>
-                        <div className="text-base text-gray-600 font-medium">
+                        <div className="text-sm text-gray-500">
                           {interview.start.toLocaleString('en-US', {
                             weekday: 'short',
                             month: 'short',
@@ -187,8 +187,8 @@ export default function SchedulePage() {
         </div>
         
         {showScheduleForm && (
-          <div className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50 p-6">
-            <div className="max-w-3xl w-full">
+          <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+            <div className="max-w-2xl w-full">
               <NewInterviewForm 
                 onSchedule={handleScheduleInterview}
                 onCancel={() => setShowScheduleForm(false)}
@@ -198,8 +198,8 @@ export default function SchedulePage() {
         )}
         
         {selectedInterview && (
-          <div className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50 p-6">
-            <div className="max-w-3xl w-full">
+          <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+            <div className="max-w-2xl w-full">
               <InterviewDetails 
                 interview={selectedInterview}
                 onClose={handleCloseDetails}

@@ -102,37 +102,18 @@ export default function InterviewCalendar({
   );
 
   return (
-    <div className="h-[75vh] pb-4">
+    <div className="h-[70vh]">
       <Calendar
         localizer={localizer}
         events={interviews}
         startAccessor="start"
         endAccessor="end"
-        style={{ 
-          height: '100%', 
-          width: '100%' 
-        }}
+        style={{ height: '100%', width: '100%' }}
         selectable
         onSelectEvent={handleSelectEvent}
         onSelectSlot={handleSelectSlot}
         defaultView={Views.WEEK}
         views={['month', 'week', 'day']}
-        popup
-        eventPropGetter={(event) => ({
-          style: {
-            backgroundColor: '#3b82f6',
-            borderRadius: '4px',
-            border: 'none',
-            color: 'white',
-            padding: '2px 4px',
-            fontWeight: 'medium'
-          }
-        })}
-        dayPropGetter={(date) => ({
-          style: {
-            backgroundColor: date.getDate() === new Date().getDate() ? '#f3f4f6' : 'transparent'
-          }
-        })}
       />
     </div>
   );
