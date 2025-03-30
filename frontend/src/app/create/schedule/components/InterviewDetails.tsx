@@ -84,36 +84,36 @@ END:VCALENDAR`;
   };
 
   return (
-    <div className="bg-white rounded-lg shadow-lg p-6">
-      <h2 className="text-xl font-semibold mb-4">{interview.title}</h2>
+    <div className="bg-white rounded-xl shadow-xl p-8">
+      <h2 className="text-2xl font-bold text-blue-600 mb-6">{interview.title}</h2>
       
-      <div className="space-y-4 mb-6">
+      <div className="space-y-6 mb-8">
         <div>
-          <div className="text-sm text-gray-500">Candidate</div>
-          <div className="font-medium">{interview.candidateName}</div>
+          <div className="text-sm text-gray-500 mb-1">Candidate</div>
+          <div className="font-medium text-lg">{interview.candidateName}</div>
         </div>
         
         <div>
-          <div className="text-sm text-gray-500">Position</div>
-          <div className="font-medium">{interview.jobTitle}</div>
+          <div className="text-sm text-gray-500 mb-1">Position</div>
+          <div className="font-medium text-lg">{interview.jobTitle}</div>
         </div>
         
         <div>
-          <div className="text-sm text-gray-500">Time</div>
-          <div className="font-medium">{formatDate(interview.start)} - {formatDate(interview.end)}</div>
+          <div className="text-sm text-gray-500 mb-1">Time</div>
+          <div className="font-medium text-lg">{formatDate(interview.start)} - {formatDate(interview.end)}</div>
         </div>
         
         <div>
-          <div className="text-sm text-gray-500">Google Meet Link</div>
+          <div className="text-sm text-gray-500 mb-2">Google Meet Link</div>
           <div className="flex items-center mt-1">
             <input 
               readOnly 
-              className="flex-1 p-2 border rounded mr-2 text-sm bg-gray-50" 
+              className="flex-1 p-3 border rounded-l-md text-base bg-gray-50 focus:outline-none" 
               value={getMeetLink()}
             />
             <button
               onClick={copyMeetLink}
-              className="px-3 py-2 bg-gray-100 rounded text-sm hover:bg-gray-200"
+              className="px-4 py-3 bg-blue-50 text-blue-700 rounded-r-md text-base hover:bg-blue-100 font-medium"
             >
               {isCopied ? 'Copied!' : 'Copy'}
             </button>
@@ -121,25 +121,25 @@ END:VCALENDAR`;
         </div>
       </div>
       
-      <div className="flex flex-wrap gap-3">
+      <div className="flex flex-wrap gap-4">
         <button
           onClick={handleSendInvite}
           disabled={isSending}
-          className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 disabled:opacity-50"
+          className="px-5 py-3 bg-blue-600 text-white rounded-md hover:bg-blue-700 disabled:opacity-50 text-base font-medium shadow-sm transition-colors"
         >
           {isSending ? 'Sending...' : 'Send Invite to Candidate'}
         </button>
         
         <button
           onClick={handleDownloadICal}
-          className="px-4 py-2 bg-gray-100 text-gray-800 rounded hover:bg-gray-200"
+          className="px-5 py-3 bg-white text-blue-700 border border-blue-200 rounded-md hover:bg-blue-50 text-base font-medium shadow-sm transition-colors"
         >
           Download iCal
         </button>
         
         <button
           onClick={onClose}
-          className="px-4 py-2 border border-gray-300 rounded hover:bg-gray-50"
+          className="px-5 py-3 border border-gray-300 rounded-md hover:bg-gray-100 text-base font-medium transition-colors"
         >
           Close
         </button>

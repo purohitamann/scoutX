@@ -51,12 +51,12 @@ export default function NewInterviewForm({ onSchedule, onCancel }: NewInterviewF
   };
 
   return (
-    <div className="bg-white rounded-lg shadow-lg p-6">
-      <h2 className="text-xl font-semibold mb-4">Schedule AI Interview</h2>
+    <div className="bg-white rounded-xl shadow-xl p-8">
+      <h2 className="text-2xl font-bold text-blue-600 mb-6">Schedule AI Interview</h2>
       
-      <form onSubmit={handleSubmit} className="space-y-4">
+      <form onSubmit={handleSubmit} className="space-y-6">
         <div>
-          <label htmlFor="candidateName" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="candidateName" className="block text-sm font-medium text-gray-700 mb-2">
             Candidate Name
           </label>
           <input
@@ -64,13 +64,13 @@ export default function NewInterviewForm({ onSchedule, onCancel }: NewInterviewF
             id="candidateName"
             value={candidateName}
             onChange={(e) => setCandidateName(e.target.value)}
-            className="w-full p-2 border rounded focus:ring-blue-500 focus:border-blue-500"
+            className="w-full p-3 border rounded-md focus:ring-blue-500 focus:border-blue-500 text-base"
             required
           />
         </div>
         
         <div>
-          <label htmlFor="jobTitle" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="jobTitle" className="block text-sm font-medium text-gray-700 mb-2">
             Job Position
           </label>
           <input
@@ -78,13 +78,13 @@ export default function NewInterviewForm({ onSchedule, onCancel }: NewInterviewF
             id="jobTitle"
             value={jobTitle}
             onChange={(e) => setJobTitle(e.target.value)}
-            className="w-full p-2 border rounded focus:ring-blue-500 focus:border-blue-500"
+            className="w-full p-3 border rounded-md focus:ring-blue-500 focus:border-blue-500 text-base"
             required
           />
         </div>
         
         <div>
-          <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
             Candidate Email
           </label>
           <input
@@ -92,14 +92,14 @@ export default function NewInterviewForm({ onSchedule, onCancel }: NewInterviewF
             id="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="w-full p-2 border rounded focus:ring-blue-500 focus:border-blue-500"
+            className="w-full p-3 border rounded-md focus:ring-blue-500 focus:border-blue-500 text-base"
             required
           />
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
-            <label htmlFor="date" className="block text-sm font-medium text-gray-700 mb-1">
+            <label htmlFor="date" className="block text-sm font-medium text-gray-700 mb-2">
               Date
             </label>
             <input
@@ -107,13 +107,13 @@ export default function NewInterviewForm({ onSchedule, onCancel }: NewInterviewF
               id="date"
               value={date}
               onChange={(e) => setDate(e.target.value)}
-              className="w-full p-2 border rounded focus:ring-blue-500 focus:border-blue-500"
+              className="w-full p-3 border rounded-md focus:ring-blue-500 focus:border-blue-500 text-base"
               required
             />
           </div>
           
           <div>
-            <label htmlFor="time" className="block text-sm font-medium text-gray-700 mb-1">
+            <label htmlFor="time" className="block text-sm font-medium text-gray-700 mb-2">
               Time
             </label>
             <input
@@ -121,21 +121,21 @@ export default function NewInterviewForm({ onSchedule, onCancel }: NewInterviewF
               id="time"
               value={time}
               onChange={(e) => setTime(e.target.value)}
-              className="w-full p-2 border rounded focus:ring-blue-500 focus:border-blue-500"
+              className="w-full p-3 border rounded-md focus:ring-blue-500 focus:border-blue-500 text-base"
               required
             />
           </div>
         </div>
         
         <div>
-          <label htmlFor="duration" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="duration" className="block text-sm font-medium text-gray-700 mb-2">
             Duration (minutes)
           </label>
           <select
             id="duration"
             value={duration}
             onChange={(e) => setDuration(Number(e.target.value))}
-            className="w-full p-2 border rounded focus:ring-blue-500 focus:border-blue-500"
+            className="w-full p-3 border rounded-md focus:ring-blue-500 focus:border-blue-500 text-base"
           >
             <option value={15}>15 minutes</option>
             <option value={30}>30 minutes</option>
@@ -144,18 +144,18 @@ export default function NewInterviewForm({ onSchedule, onCancel }: NewInterviewF
           </select>
         </div>
         
-        <div className="pt-4 flex justify-end space-x-3">
+        <div className="pt-6 flex justify-end space-x-4">
           <button
             type="button"
             onClick={onCancel}
-            className="px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50"
+            className="px-5 py-3 border border-gray-300 rounded-md shadow-sm text-base font-medium text-gray-700 bg-white hover:bg-gray-50 transition-colors"
           >
             Cancel
           </button>
           <button
             type="submit"
             disabled={isSubmitting}
-            className="px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50"
+            className="px-5 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 transition-colors"
           >
             {isSubmitting ? 'Scheduling...' : 'Schedule Interview'}
           </button>
