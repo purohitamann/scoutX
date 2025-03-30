@@ -3,8 +3,8 @@ def get_creat_call_payload(candidate_name, job_name, job_description, phone_numb
     
   json={
       #Here I will add the id from agent_config.py file
-      "assistantId": "5a5c8aa0-649f-4de6-9630-728e12275da3",
-      "name": "ScoutX_API",
+      "assistantId": "fd0d70a7-063f-416b-a0ee-f6d8366d9477",
+      "name": "VoiceHire_API",
       "customers": [
         {
           #Phone Number of Candidate

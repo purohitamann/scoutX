@@ -2,7 +2,7 @@ from backend.services.AI_services_configs.prompt import SYSTEM_PROMPT
 
 def get_agent_payload():
   json= {
-    "name": "ScoutX_API",
+    "name": "VoiceHire_API",
     "voice": {
       "voiceId": "Elliot",
       "provider": "vapi",

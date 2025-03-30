@@ -96,7 +96,7 @@ def send_feedback_email(to_email):
     name = analysis["candidate_name"]
     feedback_summary = analysis["candidate_summary"] + "\n\nAI Recommendation: " + analysis["ai_recommendation"]
 
-    subject = "ScoutX Interview Feedback - Thank You!"
+    subject = "VoiceHire Interview Feedback - Thank You!"
     body = f"""
 Hi {name},
 
@@ -111,7 +111,7 @@ We really appreciate your interest in the position and the insights you shared. 
 Wishing you all the best with your job search!
 
 Warm regards,  
-ScoutX Team
+VoiceHire Team
 
 """
 
