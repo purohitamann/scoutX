@@ -1,0 +1,13 @@
+flowchart TD
+    A[User/Recruiter] -->|Setup Interview| B[Interview Manager]
+    B -->|Configure Questions| C[Question Bank]
+    B -->|Start Call| D[Call Handler]
+    D -->|Capture Audio| E[Audio Input]
+    E -->|Convert Speech| F[OpenAI Whisper STT]
+    F -->|Text| G[Conversation Manager]
+    G -->|Query| H[Perplexity AI LLM]
+    H -->|Response| G
+    G -->|Generate Speech| I[OpenAI TTS]
+    I -->|Audio Output| J[Speaker]
+    G -->|Save| K[Transcript & Analysis]
+    K -->|Generate| L[Candidate Report]
