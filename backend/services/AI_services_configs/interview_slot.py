@@ -1,11 +1,5 @@
-import requests
 
-response = requests.post(
-  "https://api.vapi.ai/tool",
-  headers={
-    "Authorization": "Bearer b23b37bf-4795-4bcd-993d-401890c569cd",
-    "Content-Type": "application/json"
-  },
+def get_inetrview_slot_payload():
   json={
         "type": "google.calendar.event.create",
         "function": {
@@ -38,7 +32,4 @@ response = requests.post(
         "messages": [],
         "async": False
         }
-)
-
-print(response.json())
-
+  return json

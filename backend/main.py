@@ -1,6 +1,7 @@
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from backend.services.Analyse_services import *
+from backend.services.AI_services import *
 
 app = FastAPI()
 
@@ -9,6 +10,12 @@ class KeywordsInput(BaseModel):
 
 class EmailInput(BaseModel):
     to_email: str
+
+class CallInput(BaseModel):
+    candidate_name: str
+    job_name: str
+    job_description: str
+    phone_number: str
 
 @app.get("/transcript/{call_id}")
 def get_transcript(call_id: str):
@@ -37,5 +44,18 @@ def analyze():
 def send_email(data: EmailInput):
     try:
         return send_feedback_email(data.to_email)
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+    
+@app.post("/create-call/")
+def trigger_call(data: CallInput):
+    try:
+        result = create_call(
+            data.candidate_name,
+            data.job_name,
+            data.job_description,
+            data.phone_number
+        )
+        return {"status": "success", "call_data": result}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
