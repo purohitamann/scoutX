@@ -26,7 +26,7 @@ response = requests.post(
       "twilioAuthToken": "a59ddef0197ce533de085f11a95f51f1",
       "twilioPhoneNumber": "+19143346292"
     },
-    # Need to make candiate_name and job_name and job description dynamic
+    # Need to make candiate_name and job_name and job description dynamics
     "assistantOverrides": {
       "variableValues": {
         "candidate_name": "Aman",
